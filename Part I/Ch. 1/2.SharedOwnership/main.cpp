@@ -4,14 +4,12 @@
 #include <boost/shared_array.hpp> // samp 4
 #include <iostream>
 #include <ctime>		// samp 5
-#include <Windows.h>	// samp 2
-
-#include "Complex.h"	// samp 1
+#include "Complex.hpp"	// samp 1
 
 
 int main()
 {
-	/*
+	
 	// samp 1
 	{
 		boost::shared_ptr<Complex> c1{ new Complex(0.,0.) };
@@ -28,7 +26,7 @@ int main()
 
 	// samp 2
 	{
-		boost::shared_ptr<void> handle(OpenProcess(PROCESS_SET_INFORMATION, FALSE, GetCurrentProcessId()), CloseHandle);
+		//boost::shared_ptr<void> handle(OpenProcess(PROCESS_SET_INFORMATION, FALSE, GetCurrentProcessId()), CloseHandle);
 	}
 
 	// samp 3
@@ -48,7 +46,7 @@ int main()
 			p2[0] = Complex (1, 1);
 		}
 		std::cout << p1[0] << '\n';
-	}*/
+	}
 
 	//samp 5
 	{

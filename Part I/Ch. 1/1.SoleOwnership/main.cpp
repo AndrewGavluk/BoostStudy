@@ -1,7 +1,7 @@
 #include <boost/scoped_ptr.hpp>
 #include <boost/scoped_array.hpp>
 #include <iostream>
-#include "Complex.h"
+#include "Complex.hpp"
 
 int main()
 {
