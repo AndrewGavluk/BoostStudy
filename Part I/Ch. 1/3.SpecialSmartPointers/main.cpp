@@ -4,7 +4,7 @@
 #include <functional>
 #include <iostream>
 
-#include "Complex.h"
+#include "Complex.hpp"
 
 void reset(boost::shared_ptr<Complex> &sh)
 {
@@ -15,7 +15,7 @@ void print(boost::weak_ptr<Complex> &w)
 {
 	boost::shared_ptr<Complex> sh= w.lock();
 	if (sh)
-		std::cout << *sh << '/n';
+		std::cout << *sh << '\n';
 }
 
 int main()

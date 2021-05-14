@@ -1,3 +1,5 @@
+cmake_minimum_required (VERSION 3.12)
+
 project( shared_ownership)
 
 add_library( complex STATIC Complex.hpp Complex.cpp)
