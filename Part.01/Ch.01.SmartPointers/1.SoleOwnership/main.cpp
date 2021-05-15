@@ -9,6 +9,7 @@ int main()
 	delete _i;
 
 	{
+		std::cout << "Sample1:\n";
 		boost::scoped_ptr<Complex> p(new Complex);
 		std::cout << *p << '\n';
 		p.reset(new Complex( 1.5, 0.5, typeArg::ReIm));
@@ -18,6 +19,7 @@ int main()
 	}
 
 	{
+		std::cout << "Sample2:\n";
 		const int SIZE = 5;
 		const int SIZE2 = 3;
 		boost::scoped_array<Complex> p (new Complex[SIZE]);
