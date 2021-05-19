@@ -105,7 +105,8 @@ int main()
             boost::regex expr{"(\\w+)\\s(\\w+)"};
             std::string fmt{"\\2 \\1"};
             std::cout << boost::regex_replace(s, expr, fmt,
-                                              boost::regex_constants::format_literal) << '\n';
+                                              boost::regex_constants::format_literal)
+                      << '\n';
         }
         // c++11 STL
         {
@@ -113,7 +114,8 @@ int main()
             boost::regex expr{"(\\w+)\\s(\\w+)"};
             std::string fmt{"\\2 \\1"};
             std::cout << boost::regex_replace(s, expr, fmt,
-                                              boost::regex_constants::format_literal) << '\n';
+                                              boost::regex_constants::format_literal)
+                      << '\n';
         }
     }
 
@@ -123,10 +125,21 @@ int main()
         std::cout << "sample 6:\n";
         // boost
         {
-
+            std::string s = "Boost Libraries C++";
+            boost::regex expr{"\\w*[o,i]+"};
+            boost::regex_token_iterator<std::string::iterator> it{s.begin(), s.end(), expr};
+            boost::regex_token_iterator<std::string::iterator> end;
+            while (it != end)
+                std::cout << *it++ << '\n';
         }
         // c++11 STL
         {
+            std::string s = "Boost Libraries and st libraries";
+            std::regex expr{"\\w*[t,s]+"};
+            std::regex_token_iterator<std::string::iterator> it{s.begin(), s.end(), expr};
+            std::regex_token_iterator<std::string::iterator> end;
+            while (it != end)
+                std::cout << *it++ << '\n';
         }
     }
 
@@ -136,10 +149,23 @@ int main()
         std::cout << "sample 7:\n";
         // boost
         {
-
+            std::string s = "Boost Libraries";
+            boost::regex expr{"(\\w)\\w+"};
+            boost::regex_token_iterator<std::string::iterator> it{s.begin(), s.end(),
+                                                                  expr, 1};
+            boost::regex_token_iterator<std::string::iterator> end;
+            while (it != end)
+                std::cout << *it++ << '\n';
         }
         // c++11 STL
         {
+            std::string s = "Boost Libraries and st libraries";
+            std::regex expr{"(\\w)\\w+"};
+            std::regex_token_iterator<std::string::iterator> it{s.begin(), s.end(),
+                                                                expr, 1};
+            std::regex_token_iterator<std::string::iterator> end;
+            while (it != end)
+                std::cout << *it++ << '\n';
         }
     }
 
@@ -149,10 +175,15 @@ int main()
         std::cout << "sample 8:\n";
         // boost
         {
-
+            std::string s = "Boost Библиотеки";
+            boost::basic_regex<char, boost::cpp_regex_traits<char>> expr;
+            expr.imbue(std::locale{"Russian"});
+            expr = "\\w+\\s\\w+";
+            std::cout << std::boolalpha << boost::regex_match(s, expr) << '\n';
         }
         // c++11 STL
         {
+
         }
     }
 
