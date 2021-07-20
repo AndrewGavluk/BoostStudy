@@ -29,8 +29,8 @@ void RunAPISamples()
     //
     {
         std::cout << "sample 3:\n";
-        //Sample1_3.GetLine();
-        //Sample1_3.Run(ascii::space,  qi::skip_flag::dont_postskip);
+        Sample1_3.GetLine();
+        Sample1_3.Run(ascii::space,  qi::skip_flag::dont_postskip);
     }
 
     API_Samples<std::wstring, std::wistream, std::wostream> Sample4{std::wcin, std::wcout};
@@ -39,7 +39,7 @@ void RunAPISamples()
     {
         std::cout << "sample 4:\n";
         Sample4.GetLine();
-        Sample4.Run(ascii::space/*,  qi::skip_flag::dont_postskip*/);
+        Sample4.Run(ascii::space,  qi::skip_flag::dont_postskip);
     }
 }
 
