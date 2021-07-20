@@ -6,57 +6,47 @@
 
 using namespace boost::spirit;
 
-int main()
+void RunAPISamples()
 {
-    std::string s;
-    std::getline(std::cin, s);
-
-
+    API_Samples<std::string, std::istream, std::ostream> Sample1_3{std::cin, std::cout};
     // sample 1
     //
     {
-        //std::cout << "sample 1:\n";
-        API_Samples<std::string, std::istream, std::ostream> Sample1{std::cin, std::cout};
-        Sample1.GetLine();
-        Sample1.Run();
+        std::cout << "sample 1:\n";
+        Sample1_3.GetLine();
+        Sample1_3.Run();
     }
 
     // sample 2
     //
     {
-        //std::cout << "sample 2:\n";
-        auto it = s.begin();    
-        bool match = qi::phrase_parse(it, s.end(), ascii::digit, ascii::space);
-        std::cout << std::boolalpha << match << '\n';
-        if (it != s.end())
-            std::cout << std::string{it, s.end()} << '\n';
+        std::cout << "sample 2:\n";
+        Sample1_3.GetLine();
+        Sample1_3.Run(ascii::space);
     }
 
     // sample 3
     //
     {
-        //std::cout << "sample 3:\n";
-        auto it = s.begin();        
-        bool match = qi::phrase_parse(it, s.end(), ascii::digit, ascii::space,
-        qi::skip_flag::dont_postskip);
-        std::cout << std::boolalpha << match << '\n';
-        if (it != s.end())
-            std::cout << std::string{it, s.end()} << '\n';
+        std::cout << "sample 3:\n";
+        Sample1_3.GetLine();
+        Sample1_3.Run(ascii::space,  qi::skip_flag::dont_postskip);
     }
 
+    API_Samples<std::wstring, std::wistream, std::wostream> Sample4{std::wcin, std::wcout};
     // sample 4
     //
     {
-        //std::cout << "sample 4:\n";
-        std::wstring s;
-        std::getline(std::wcin, s);
-        auto it = s.begin();
-        bool match = qi::phrase_parse(it, s.end(), ascii::digit, ascii::space,
-        qi::skip_flag::dont_postskip);
-        std::wcout << std::boolalpha << match << '\n';
-        if (it != s.end())
-            std::wcout << std::wstring{it, s.end()} << '\n';
+        std::cout << "sample 4:\n";
+        Sample4.GetLine();
+        Sample4.Run(ascii::space,  qi::skip_flag::dont_postskip);
     }
+}
+
+int main()
+{
+    RunAPISamples();
+    
 
     // sample 5
     //
