@@ -1,5 +1,4 @@
 #include <boost/spirit/include/qi.hpp>
-
 using namespace boost::spirit;
 
 template < typename T, typename Tcin, typename Tcout>
