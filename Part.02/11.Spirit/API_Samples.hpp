@@ -10,7 +10,7 @@ class API_Samples
         void GetLine();
         void Run(); 
         void Run(const ascii::space_type&); 
-        void Run(const ascii::space_type&, const qi::skip_flag&); 
+        //void Run(const ascii::space_type&, const qi::skip_flag&); 
     private:
         T m_string;
         Tcin& m_istream;
@@ -44,11 +44,11 @@ void API_Samples<T, Tcin, Tcout>::Run(const ascii::space_type& spaceTypes){
         std::cout << std::string{it, m_string.end()} << '\n';
 }
 
-template < class T, class Tcin, class Tcout>
+/*template < class T, class Tcin, class Tcout>
 void API_Samples<T, Tcin, Tcout>::Run(const ascii::space_type& spaceTypes, const qi::skip_flag& skipFlag){
     auto it = m_string.begin();
     bool match = qi::parse(it, m_string.end(), spaceTypes, skipFlag);
     std::cout << std::boolalpha << match << '\n';
     if (it != m_string.end())
         std::cout << std::string{it, m_string.end()} << '\n';
-}
+}*/
