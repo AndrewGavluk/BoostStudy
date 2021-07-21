@@ -1,20 +1,8 @@
-#include <boost/spirit/include/qi.hpp>
-using namespace boost::spirit;
+#include "API_Samples.hpp"
+#include <string>
+#include <iostream>
 
-template < typename T, typename Tcin, typename Tcout>
-class API_Samples
-{
-    public:
-        API_Samples(Tcin&,  Tcout&);
-        void GetLine();
-        void Run(); 
-        void Run(const ascii::space_type&); 
-        void Run(const ascii::space_type&, qi::skip_flag); 
-    private:
-        T m_string;
-        Tcin& m_istream;
-        Tcout& m_ostream;
-};
+using namespace boost::spirit;
 
 template < typename T, typename Tcin, typename Tcout>
 API_Samples<T, Tcin, Tcout>::API_Samples(Tcin& _istream,  Tcout& _ostream): 
@@ -51,3 +39,16 @@ void API_Samples<T, Tcin, Tcout>::Run(const ascii::space_type& spaceTypes, qi::s
     if (it != m_string.end())
         std::cout << std::string{it, m_string.end()} << '\n';
 }
+
+#define INSTANTIATION_TTT( T, Tcin, Tcout)\
+    template API_Samples<T, Tcin, Tcout>::API_Samples(Tcin&,  Tcout&);\
+    template void API_Samples<T, Tcin, Tcout>::GetLine();\
+    template void API_Samples<T, Tcin, Tcout>::Run();\
+    template void API_Samples<T, Tcin, Tcout>::Run(const ascii::space_type&);\
+    template void API_Samples<T, Tcin, Tcout>::Run(const ascii::space_type&, qi::skip_flag);\
+
+#define INSTANTIATION \
+    INSTANTIATION_TTT(std::string, std::istream,  std::ostream)\
+    INSTANTIATION_TTT(std::wstring, std::wistream,  std::wostream)\
+
+INSTANTIATION

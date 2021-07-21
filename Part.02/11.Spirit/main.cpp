@@ -1,5 +1,4 @@
-#include "API_Samples.hpp"
-
+#include "libs/API_Samples.hpp"
 
 #include <string>
 #include <iostream>
@@ -42,6 +41,16 @@ void RunAPISamples()
         Sample4.Run(ascii::space,  qi::skip_flag::dont_postskip);
     }
 }
+
+void RunParserSamples(){}
+
+void RunActionsSamples(){}
+
+void RunAttributesSamples(){}
+
+void RunRulesSamples(){}
+
+void RunGrammarSamples(){}
 
 int main()
 {
