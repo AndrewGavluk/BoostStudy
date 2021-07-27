@@ -11,6 +11,9 @@ add_definitions( -DBOOST_SPIRIT_USE_PHOENIX_V3=1)
 if(Boost_FOUND)
     include_directories(${Boost_INCLUDE_DIRS}) 
     add_executable(spirit main.cpp)
-    add_library(API_Samples  libs/API_Samples.hpp libs/API_Samples.cpp)
-    target_link_libraries(spirit ${Boost_LIBRARIES} API_Samples) 
+    
+    add_library(BasicParser  libs/BasicParser.hpp libs/BasicParser.cpp)
+    add_library(SimpleParser  libs/SimpleParser.hpp libs/SimpleParser.cpp)
+    
+    target_link_libraries(spirit ${Boost_LIBRARIES} BasicParser SimpleParser) 
 endif()
