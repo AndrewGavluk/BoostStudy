@@ -1,3 +1,4 @@
+#include <boost/preprocessor/seq/for_each.hpp>
 #include <boost/spirit/include/qi.hpp>
 
 using namespace boost::spirit;

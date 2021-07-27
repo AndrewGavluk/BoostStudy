@@ -1,3 +1,4 @@
+
 #include "BasicParser.hpp"
 #include <string>
 #include <iostream>
@@ -22,14 +23,16 @@ void BasicParser<T>::Print(){
 }
 
 template <typename T>
-void BasicParser<T>::Parse(){}
-
-template <typename T>
 void BasicParser<T>::Run(){
     GetLine();
     Parse();
     Print();
 }
+
+template <typename T>
+void BasicParser<T>::Parse(){}
+
+
 
 template <typename T> 
 void Parser1<T>::Parse(){}
@@ -73,7 +76,6 @@ void Parser8<T>::Parse(){}
     template void BasicParser<T>::Parse();\
     BOOST_PP_SEQ_FOR_EACH(INSTANTIATION_PARSER, T, PARSERS)\
 
-//    BOOST_PP_SEQ_FOR_EACH(PARSERS_CONSSTRUCTORS, , PARSERS)
 #define INSTANTIATION\
     BOOST_PP_SEQ_FOR_EACH(PARSERS_CONSSTRUCTORS, , PARSERS)
     INSTANTIATION_T(char)\
