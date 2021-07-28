@@ -32,32 +32,78 @@ void BasicParser<T>::Run(){
 template <typename T>
 void BasicParser<T>::Parse(){}
 
-
+template <typename T> 
+void Parser1<T>::Parse(){
+    BasicParser<T>::m_match = qi::parse(
+        BasicParser<T>::m_it, 
+        BasicParser<T>::m_string.end(), 
+        ascii::digit);
+}
 
 template <typename T> 
-void Parser1<T>::Parse(){}
+void Parser2<T>::Parse(){
+    BasicParser<T>::m_match = qi::phrase_parse(
+        BasicParser<T>::m_it,
+        BasicParser<T>::m_string.end(),
+        ascii::digit,
+        ascii::space);
+}
 
 template <typename T> 
-void Parser2<T>::Parse(){}
+void Parser3<T>::Parse(){
+    BasicParser<T>::m_match = qi::phrase_parse(
+        BasicParser<T>::m_it, 
+        BasicParser<T>::m_string.end(), 
+        ascii::digit, 
+        ascii::space,
+        qi::skip_flag::dont_postskip);
+}
 
 template <typename T> 
-void Parser3<T>::Parse(){}
+void Parser4<T>::Parse(){
+   BasicParser<T>::m_match = qi::phrase_parse(
+        BasicParser<T>::m_it, 
+        BasicParser<T>::m_string.end(),
+        ascii::digit,
+        ascii::space,
+        qi::skip_flag::dont_postskip);
+}
 
 template <typename T> 
-void Parser4<T>::Parse(){}
+void Parser5<T>::Parse(){
+    BasicParser<T>::m_match = qi::phrase_parse(
+        BasicParser<T>::m_it,
+        BasicParser<T>::m_string.end(),
+        ascii::digit >> ascii::digit,
+        ascii::space);
+}
 
 template <typename T> 
-void Parser5<T>::Parse(){}
+void Parser6<T>::Parse(){
+    BasicParser<T>::m_match = qi::phrase_parse(
+        BasicParser<T>::m_it,
+        BasicParser<T>::m_string.end(),
+        qi::lexeme[ascii::digit >> ascii::digit],
+        ascii::space);
+}
 
 template <typename T> 
-void Parser6<T>::Parse(){}
+void Parser7<T>::Parse(){
+    BasicParser<T>::m_match = qi::phrase_parse(
+        BasicParser<T>::m_it,
+        BasicParser<T>::m_string.end(),
+        +ascii::digit,
+        ascii::space);
+}
 
 template <typename T> 
-void Parser7<T>::Parse(){}
-
-template <typename T> 
-void Parser8<T>::Parse(){}
-
+void Parser8<T>::Parse(){
+    BasicParser<T>::m_match = qi::phrase_parse(
+        BasicParser<T>::m_it,
+        BasicParser<T>::m_string.end(),
+        qi::int_,
+        ascii::space);
+}
 
 
 #define PARSERS_CONSSTRUCTORS(r, TT ,elem1) \

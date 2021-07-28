@@ -11,17 +11,20 @@ class BasicParser
         BasicParser(std::basic_istream<T>&, std::basic_ostream<T>&);
         void Run(); 
         
-    private:
-        
-        void GetLine();
-        void virtual Parse() = 0;
-        void Print();
+    protected:
 
         std::basic_string<T>    m_string;
         typename std::basic_string<T>::iterator m_it;
         std::basic_istream<T>&  m_istream;
         std::basic_ostream<T>&  m_ostream;
         bool m_match; 
+
+    private:
+
+        void GetLine();
+        void virtual Parse() = 0;
+        void Print();
+
 };
 
 #define PARSERS \
