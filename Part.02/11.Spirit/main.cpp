@@ -1,46 +1,41 @@
 
+#include "libs/BasicParser.hpp"
+
 #include <boost/preprocessor/control/iif.hpp>
 #include <boost/vmd/equal.hpp>
-#include "libs/SimpleParser.hpp"
 
 #include <string>
 #include <iostream>
 
 using namespace boost::spirit;
 
-#define SAMPLE(T, N) \
+#define CSAMPLE(T, N) SAMPLE(T, N, std::cin, std::cout)
+#define WSAMPLE(T, N) SAMPLE(T, N, std::wcin, std::wcout)
+
+#define SAMPLE(T, N, Tcin, Tcout)\
 {\
-    std::cout << "\nsample " + std::to_string(N) + ":\n"; \
-    BOOST_PP_SEQ_ELEM(N, PARSERS)<T> sample { std::cin, std::cout};\
+    std::cout << "\nsample" + std::to_string(N) + ":\n"; \
+    BOOST_PP_SEQ_ELEM(N, PARSERS)<T> sample { Tcin, Tcout}; \
     sample.Run();\
 }\
 
-#define WSAMPLE(T, N) \
-{ \
-    std::cout << "\nsample" + std::to_string(N) + ":\n"; \
-    BOOST_PP_SEQ_ELEM(N, PARSERS)<T> sample { std::wcin, std::wcout}; \
-    sample.Run(); \
-} \
-
-// sample: 1 2 3 q w e
 void RunAPISamples(){
-    SAMPLE(char, 0);
-    SAMPLE(char, 1);
-    SAMPLE(char, 2);
+    CSAMPLE(char, 0);
+    CSAMPLE(char, 1);
+    CSAMPLE(char, 2);
     WSAMPLE(wchar_t, 3);
 }
 
-// sample: 1 2 q w
-// sample: 12 qw
-// sample: -12 qw
 void RunParserSamples(){
-    SAMPLE(char, 4);
-    SAMPLE(char, 5);
-    SAMPLE(char, 6);
-    SAMPLE(char, 7);
+    CSAMPLE(char, 4);
+    CSAMPLE(char, 5);
+    CSAMPLE(char, 6);
+    CSAMPLE(char, 7);
 }
 
-void RunActionsSamples(){}
+void RunActionsSamples(){
+
+}
 
 void RunAttributesSamples(){}
 
@@ -50,7 +45,7 @@ void RunGrammarSamples(){}
 
 int main()
 {
-    //RunAPISamples();
+    RunAPISamples();
     RunParserSamples();
 
     return 0;

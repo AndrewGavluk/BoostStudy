@@ -23,19 +23,15 @@ class BasicParser
 
         void GetLine();
         void virtual Parse() = 0;
-        void Print();
+        void virtual Print();
 
 };
 
 #define PARSERS \
-(Parser1)\
-(Parser2)\
-(Parser3)\
-(Parser4)\
-(Parser5)\
-(Parser6)\
-(Parser7)\
-(Parser8)\
+(Parser1) (Parser2) (Parser3) (Parser4)\
+(Parser5) (Parser6) (Parser7) (Parser8)\
+(Parser9) (ParserA) (ParserB) (ParserC)\
+(ParserD) (ParserE)\
 
 #define TEMPLATE_CLASS(r, TT, elem) \
 template < typename T > \

@@ -1,5 +1,8 @@
 
 #include "BasicParser.hpp"
+
+#include <boost/phoenix/phoenix.hpp>
+
 #include <string>
 #include <iostream>
 
@@ -105,6 +108,32 @@ void Parser8<T>::Parse(){
         ascii::space);
 }
 
+template <typename T> 
+void Parser9<T>::Parse(){
+    BasicParser<T>::m_match = qi::phrase_parse(
+        BasicParser<T>::m_it,
+        BasicParser<T>::m_string.end(),
+        qi::int_[ ([](int i){ std::cout << i << '\n'; }) ], 
+        ascii::space);
+}
+
+template <typename T> 
+void ParserA<T>::Parse(){
+    using boost::phoenix::ref;
+    int i;
+    BasicParser<T>::m_match = qi::phrase_parse(
+        BasicParser<T>::m_it,
+        BasicParser<T>::m_string.end(),
+        qi::int_[ref(i) = qi::_1],
+        ascii::space);
+    if (BasicParser<T>::m_match)
+        std::cout << i << '\n';
+}
+
+template <typename T> void ParserB<T>::Parse(){}
+template <typename T> void ParserC<T>::Parse(){}
+template <typename T> void ParserD<T>::Parse(){}
+template <typename T> void ParserE<T>::Parse(){}
 
 #define PARSERS_CONSSTRUCTORS(r, TT ,elem1) \
     template <typename T> elem1<T>::elem1(std::basic_istream<T>& _istream, std::basic_ostream<T>& _ostream): \
