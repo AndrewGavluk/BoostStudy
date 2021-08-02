@@ -34,10 +34,14 @@ void RunParserSamples(){
 }
 
 void RunActionsSamples(){
-
+    CSAMPLE(char, 8);
+    CSAMPLE(char, 9);
 }
 
-void RunAttributesSamples(){}
+void RunAttributesSamples(){
+    CSAMPLE(char, 10);
+    CSAMPLE(char, 11);
+}
 
 void RunRulesSamples(){}
 
@@ -47,6 +51,8 @@ int main()
 {
     RunAPISamples();
     RunParserSamples();
+    RunActionsSamples();
+    RunAttributesSamples();
 
     return 0;
 }

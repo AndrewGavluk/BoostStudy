@@ -2,6 +2,7 @@
 #include "BasicParser.hpp"
 
 #include <boost/phoenix/phoenix.hpp>
+#include <boost/variant.hpp>
 
 #include <string>
 #include <iostream>
@@ -113,7 +114,7 @@ void Parser9<T>::Parse(){
     BasicParser<T>::m_match = qi::phrase_parse(
         BasicParser<T>::m_it,
         BasicParser<T>::m_string.end(),
-        qi::int_[ ([](int i){ std::cout << i << '\n'; }) ], 
+        qi::int_[([](int i){ std::cout << i << std::endl; })], 
         ascii::space);
 }
 
@@ -126,12 +127,37 @@ void ParserA<T>::Parse(){
         BasicParser<T>::m_string.end(),
         qi::int_[ref(i) = qi::_1],
         ascii::space);
+
     if (BasicParser<T>::m_match)
         std::cout << i << '\n';
 }
 
-template <typename T> void ParserB<T>::Parse(){}
-template <typename T> void ParserC<T>::Parse(){}
+template <typename T> void ParserB<T>::Parse(){
+    int i;
+    if (qi::phrase_parse(
+        BasicParser<T>::m_it,
+        BasicParser<T>::m_string.end(),
+        qi::int_, 
+        ascii::space, 
+        i))
+        std::cout << i << '\n';
+}
+
+template <typename T> void ParserC<T>::Parse(){
+    std::vector<int> v;
+    if (qi::phrase_parse(
+        BasicParser<T>::m_it,
+        BasicParser<T>::m_string.end(),
+        qi::int_ % ',',
+        ascii::space,
+        v))
+    {
+        std::ostream_iterator<int> out{std::cout, ";"};
+        std::copy(v.begin(), v.end(), out);
+    }
+}
+
+
 template <typename T> void ParserD<T>::Parse(){}
 template <typename T> void ParserE<T>::Parse(){}
 
