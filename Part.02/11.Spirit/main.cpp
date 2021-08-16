@@ -43,9 +43,17 @@ void RunAttributesSamples(){
     CSAMPLE(char, 11);
 }
 
-void RunRulesSamples(){}
+void RunRulesSamples(){
+    std::cout << "\nsample" + std::to_string(12) + ":\n"; 
+    ParserD(std::cin, std::cout);
+    std::cout << "\nsample" + std::to_string(13) + ":\n"; 
+    ParserE(std::cin, std::cout);
+}
 
-void RunGrammarSamples(){}
+void RunGrammarSamples(){
+    std::cout << "\nsample" + std::to_string(12) + ":\n"; 
+    ParserF(std::cin, std::cout);
+}
 
 int main()
 {
@@ -53,6 +61,7 @@ int main()
     RunParserSamples();
     RunActionsSamples();
     RunAttributesSamples();
+    RunRulesSamples();
 
     return 0;
 }

@@ -27,11 +27,19 @@ class BasicParser
 
 };
 
+template <typename T>
+void ParserD(std::basic_istream<T>& istream,  std::basic_ostream<T>& ostream);
+
+template <typename T>
+void ParserE(std::basic_istream<T>& istream,  std::basic_ostream<T>& ostream);
+
+template <typename T>
+void ParserF(std::basic_istream<T>& istream,  std::basic_ostream<T>& ostream);
+
 #define PARSERS \
 (Parser1) (Parser2) (Parser3) (Parser4)\
 (Parser5) (Parser6) (Parser7) (Parser8)\
 (Parser9) (ParserA) (ParserB) (ParserC)\
-(ParserD) (ParserE)\
 
 #define TEMPLATE_CLASS(r, TT, elem) \
 template < typename T > \
@@ -44,3 +52,4 @@ class elem : public BasicParser<T> \
 }; \
 
 BOOST_PP_SEQ_FOR_EACH(TEMPLATE_CLASS, , PARSERS);
+
