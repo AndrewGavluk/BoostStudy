@@ -4,6 +4,7 @@
 
 void exersize1()
 {
+  std::cout << "exersize1\n";
   const auto animals {CreateAnimal<animal_multi_1_2>()};
   std::cout << animals.count("cat") << '\n';
   const animal_multi_1_2::nth_index<1>::type &legs_index = animals.get<1>();
@@ -12,6 +13,7 @@ void exersize1()
 
 void exersize2()
 {
+  std::cout << "exersize2\n";
   auto animals {CreateAnimal<animal_multi_1_2>()};
   auto &legs_index = animals.get<1>();
   auto it = legs_index.find(4);
@@ -21,6 +23,7 @@ void exersize2()
 
 void exersize3()
 {
+  std::cout << "exersize3\n";
   const auto animals {CreateAnimal<animal_multi_3>()};
   auto &legs_index = animals.get<1>();
   std::cout << legs_index.count(4) << '\n';
@@ -28,8 +31,8 @@ void exersize3()
 
 void exersize4()
 {
+  std::cout << "exersize4\n";
   const auto animals {CreateAnimal<animal_multi_4>()};
-
   auto &legs_index = animals.get<1>();
   auto it = legs_index.lower_bound(4);
   auto end = legs_index.upper_bound(8);
@@ -43,6 +46,7 @@ void exersize4()
 
 void exersize5()
 {
+  std::cout << "exersize5\n";
   const auto animals {CreateAnimal<animal_multi_5>()};
   std::cout << animals.begin()->name() << '\n';
   const auto &name_index = animals.get<1>();
