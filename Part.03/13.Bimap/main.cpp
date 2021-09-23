@@ -50,4 +50,6 @@ int main()
     exersize3();
     exersize4();
     exersize5();
+
+    return 0;
 }
